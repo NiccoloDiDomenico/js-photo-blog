@@ -1,0 +1,30 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+img {
+    max-width: 100%;
+}
+
+/* UTILITY */
+:root {
+    --header-height: 100px;
+}
+
+/* Header */
+header {
+  font-family: "Edu TAS Beginner", cursive;
+  font-optical-sizing: auto;
+  font-weight: bold;
+  background-image: url(../img/wall.png);
+  height: var(--header-height);
+}
+
+/* Main */
+.photo-blog-section {
+  background-image: url(../img/cork.png);
+  min-height: calc(100vh - var(--header-height));
+}
