@@ -1,6 +1,8 @@
 // Elements
 const photoBlogGridElements = document.getElementById("photo-blog-grid")
-console.log(photoBlogGridElements);
+const overlayElement = document.querySelector(".overlay")
+const btnCloseItemElement = document.querySelector(".btn-close-item")
+console.log(photoBlogGridElements, overlayElement, btnCloseItemElement);
 
 // Functions
 
@@ -31,4 +33,24 @@ axios.get(`https://jsonplaceholder.typicode.com/photos?_limit=6`)
                 </div>
             `;
         });
+        
+        // Prendo l'elemento card dal nodo HTML
+        const cardsElements = document.querySelectorAll(".card")
+        console.log(cardsElements);
+
+        // Creo un ciclo forEach con l'arrey di elementi presi sopra
+        cardsElements.forEach(curCard => {
+            console.log(curCard);
+
+            // Per ogni elemento aggingo un evento click
+            curCard.addEventListener("click", () => {
+                // console.log(`click`);
+                overlayElement.classList.remove("hide");
+                btnCloseItemElement.addEventListener("click", () => {
+                    // console.log("click");
+                    overlayElement.classList.add("hide");
+                });
+            });
+        });
+        
     });
