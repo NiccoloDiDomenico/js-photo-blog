@@ -1,8 +1,11 @@
 // Elements
 const photoBlogGridElements = document.getElementById("photo-blog-grid")
 const overlayElement = document.querySelector(".overlay")
+const overlayItemImgElement = document.getElementById("overlay-item-img")
 const btnCloseItemElement = document.querySelector(".btn-close-item")
-console.log(photoBlogGridElements, overlayElement, btnCloseItemElement);
+
+
+console.log(photoBlogGridElements, overlayElement, overlayItemImgElement, btnCloseItemElement);
 
 // Functions
 
@@ -13,7 +16,7 @@ console.log(photoBlogGridElements, overlayElement, btnCloseItemElement);
 axios.get(`https://jsonplaceholder.typicode.com/photos?_limit=6`)
     .then((response) => {
         console.log(response.data);
-        
+
         // Creo ciclo forEach con l'array di oggetti presi dalla chiamata
         response.data.forEach(curElement => {
             // Creo due variabili gli assegno i valori delle chiavi degli oggetti presi dalla chiamata
@@ -33,11 +36,11 @@ axios.get(`https://jsonplaceholder.typicode.com/photos?_limit=6`)
                 </div>
             `;
         });
-        
+
         // Prendo l'elemento card dal nodo HTML
         const cardsElements = document.querySelectorAll(".card")
         console.log(cardsElements);
-
+        
         // Creo un ciclo forEach con l'arrey di elementi presi sopra
         cardsElements.forEach(curCard => {
             console.log(curCard);
@@ -46,11 +49,16 @@ axios.get(`https://jsonplaceholder.typicode.com/photos?_limit=6`)
             curCard.addEventListener("click", () => {
                 // console.log(`click`);
                 overlayElement.classList.remove("hide");
+                
+                // Aggiungo l'img per ogni overlay
+                overlayItemImgElement.src = curCard.querySelector('img').src;               
+                
+                // Per ogni elemento aggiungo un evento click al bottone
                 btnCloseItemElement.addEventListener("click", () => {
                     // console.log("click");
                     overlayElement.classList.add("hide");
                 });
             });
         });
-        
+
     });
