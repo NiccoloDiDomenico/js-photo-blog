@@ -21,12 +21,14 @@ img {
 header {
   background-image: url(../img/wall.png);
   height: var(--header-height);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Main */
 .photo-blog-section {
   background-image: url(../img/cork.png);
-  min-height: calc(100vh - var(--header-height));
 }
 
 /* Overlay */
@@ -58,4 +60,13 @@ header {
   height: 50px;
   border-radius: 8px;
   font-size: large;
+}
+
+/* Hover */
+.card:hover {
+  transform: rotate(10deg) scale(1.1);
+  transition: transform 0.5s ease, box-shadow 0.3s ease;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  z-index: 1;
 }
