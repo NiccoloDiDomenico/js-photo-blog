@@ -10,12 +10,12 @@ console.log(photoBlogGridElements, overlayElement, overlayItemImgElement, btnClo
 // FUNCTIONS
 
 /**
- * Funzione che tramite una chiamata AJAX ottiene degli oggetti da un API e crea un nodo HTML che aggiunge delle cards per la "photo-blog-section"
+ * Funzione che tramite una richiesta AJAX ottiene degli oggetti da un API e crea un nodo HTML che aggiunge delle cards per la "photo-blog-section"
  * @param {object} // nodo HTML
  * @returns {object} // nodo HTML 
  */
 function getPhoto(element) {
-    // Effettuo una chiamata AJAX tramite AXIOS all'API di JSON Placeholder
+    // Effettuo una richiesta AJAX tramite AXIOS all'API di JSON Placeholder
     axios.get(`https://jsonplaceholder.typicode.com/photos?_limit=6`)
     .then((response) => {
         console.log(response, response.data);
@@ -33,7 +33,7 @@ function getPhoto(element) {
             element.innerHTML += `
                 <div class="col">
                     <div class="card">
-                        <img src="${url}" class="card-img-top" alt="photo">
+                        <img src="${url}" class="card-img-top" alt="${title}">
                         <div class="card-body" style="height: 80px">
                             <h5 class="card-title">${title}</h5>
                         </div>
@@ -65,8 +65,9 @@ function getPhoto(element) {
                 });
             });
         });
-        
+
         return photoBlogGridElements;
+
     });
 };
 
